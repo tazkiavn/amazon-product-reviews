@@ -36,3 +36,11 @@ from sklearn.feature_extraction.text import TfidfTransformer
 tfidf = TfidfTransformer(max_features=5000)
 x = tfidf.fit_transform(data['cleaned_reviews.text'])
 y = data['sentiment']
+
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.2)
+
+model = LogisticRegression()
+model.fit(X_train,y_train)
