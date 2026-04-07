@@ -50,3 +50,13 @@ from sklearn.metrics import classification_report
 y_pred = model.predict(x_test)
 
 print(classification_report(y_test,y_pred))
+
+data['prediction'] = model.predict(x)
+data.to_csv("sentiment_output.csv", index=False)
+
+data['sentiment'].value_counts
+
+import matplotlib.pyplot as plt
+
+data['sentiment'].value_counts().plot(kind='bar')
+plt.show()
