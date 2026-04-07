@@ -31,9 +31,9 @@ data['sentiment'] = data['reviews.rating'].apply(sentiment_label)
 
 print(data['sentiment'])
 
-from sklearn.feature_extraction.text import TfidfTransformer
+from sklearn.feature_extraction.text import TfidfVectorizer
 
-tfidf = TfidfTransformer(max_features=5000)
+tfidf = TfidfVectorizer(max_features=5000)
 x = tfidf.fit_transform(data['cleaned_reviews.text'])
 y = data['sentiment']
 
@@ -43,4 +43,10 @@ from sklearn.linear_model import LogisticRegression
 x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.2)
 
 model = LogisticRegression()
-model.fit(X_train,y_train)
+model.fit(x_train,y_train)
+
+from sklearn.metrics import classification_report
+
+y_pred = model.predict(x_test)
+
+print(classification_report(y_test,y_pred))
