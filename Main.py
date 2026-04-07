@@ -30,3 +30,9 @@ def sentiment_label(rating):
 data['sentiment'] = data['reviews.rating'].apply(sentiment_label)
 
 print(data['sentiment'])
+
+from sklearn.feature_extraction.text import TfidfTransformer
+
+tfidf = TfidfTransformer(max_features=5000)
+x = tfidf.fit_transform(data['cleaned_reviews.text'])
+y = data['sentiment']
