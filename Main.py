@@ -54,7 +54,7 @@ print(classification_report(y_test,y_pred))
 data['prediction'] = model.predict(x)
 data.to_csv("sentiment_output.csv", index=False)
 
-data['sentiment'].value_counts
+data['sentiment'].value_counts()
 
 import matplotlib.pyplot as plt
 
